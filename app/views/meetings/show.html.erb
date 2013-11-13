@@ -7,6 +7,11 @@
   <dd><%= @meeting.held_on %></dd>
 
   <dt>Course</dt>
-  <dd><%= @meeting.course_id %></dd>
+  <dd><%= @course.department %> <%= @course.number %> <%= @course.title %></dd>
 
+  <dt>Students</dt>
+  <% @attendance.each do |attendance| %>
+  <% student = Student.find_by(:id => attendance.student_id) %>
+  <dd><%= student.first_name %> <%= student.last_name %> </dd>  
+  <% end %>
 </dl>

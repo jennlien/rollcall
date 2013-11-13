@@ -6,9 +6,12 @@ class AttendancesController < ApplicationController
 
   def show
     @attendance = Attendance.find_by(id: params[:id])
+    @student = Student.find_by(:id => @attendance.student_id)
   end
 
   def new
+    @students = Student.all
+    @meetings = Meeting.all
   end
 
   def create

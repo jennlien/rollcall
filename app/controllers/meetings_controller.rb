@@ -5,10 +5,13 @@ class MeetingsController < ApplicationController
   end
 
   def show
-    @meeting = Meeting.find_by(id: params[:id])
+    @meeting = Meeting.find_by(:id => params[:id])
+    @course = Course.find_by(:id => @meeting.course_id)
+    @attendance = Attendance.where(:meeting_id => @meeting.id)
   end
 
   def new
+    @courses = Course.all
   end
 
   def create

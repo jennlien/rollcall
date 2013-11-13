@@ -6,14 +6,25 @@
   <div class="form-group">
     <%= label_tag :meeting_id, nil, class: 'col-md-2 control-label' %>
     <div class="col-md-6">
-      <%= number_field_tag :meeting_id, nil, class: 'form-control' %>
+      <select name="meeting_id">
+          <% @meetings.each do |meeting| %>
+          <% course = Course.find_by(:id => meeting.course_id) %>
+          <option value="<%= meeting.id %>"><%= course.department %> <%= course.number %> <%= course.title %> <%= meeting.held_on %>
+          </option> 
+          <% end %>
+
+</select>
     </div>
   </div>
 
   <div class="form-group">
     <%= label_tag :student_id, nil, class: 'col-md-2 control-label' %>
     <div class="col-md-6">
-      <%= number_field_tag :student_id, nil, class: 'form-control' %>
+        <select name="student_id">
+          <% @students.each do |student| %>
+            <option value="<%= student.id %>"> <%= student.first_name %> <%= student.last_name %> </option>
+          <% end %>
+        </select>
     </div>
   </div>
 

@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Course #<%= @course.id %></h1>
+  <h1>Course <%= @course.department %> <%= @course.number %> <%= @course.title %></h1>
 </div>
 
 <dl class="dl-horizontal">
@@ -11,5 +11,11 @@
 
   <dt>Title</dt>
   <dd><%= @course.title %></dd>
+
+  <dt>Meeting</dt>
+  <% @meetings.each do |meeting| %>
+  <dd><%= meeting.held_on %></dd>
+  <% end %>
+
 
 </dl>
